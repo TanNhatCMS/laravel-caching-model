@@ -6,6 +6,9 @@
         "php": "^7.0|^8.0",
         "laravel/framework": "^6.0|^7.0|^8.0|^9.0"
     },
+     "replace": {
+        "hacoidev/laravel-caching-model":"*"
+    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
