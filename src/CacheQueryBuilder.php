@@ -4,10 +4,10 @@ namespace Hacoidev\CachingModel;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use \Hacoidev\CachingModel\Contracts\BuilderInterface;
+use Hacoidev\CachingModel\Contracts\BuilderInterface;
 use Closure;
-use \Hacoidev\CachingModel\Contracts\Cacheable;
-use \Hacoidev\CachingModel\Exceptions\UnsupportedModelException;
+use Hacoidev\CachingModel\Contracts\Cacheable;
+use Hacoidev\CachingModel\Exceptions\UnsupportedModelException;
 
 class CacheQueryBuilder implements BuilderInterface
 {
