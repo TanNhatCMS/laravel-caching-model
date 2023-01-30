@@ -4,7 +4,7 @@ namespace Hacoidev\CachingModel;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
-use \Hacoidev\CachingModel\Contracts\BuilderInterface;
+use Hacoidev\CachingModel\Contracts\BuilderInterface;
 use Hacoidev\CachingModel\Contracts\Cacheable;
 
 trait HasCache
