@@ -2,7 +2,7 @@
 
 namespace Hacoidev\CachingModel\Contracts;
 
-use \Hacoidev\CachingModel\Contracts\BuilderInterface;
+use Hacoidev\CachingModel\Contracts\BuilderInterface;
 
 interface Cacheable
 {
