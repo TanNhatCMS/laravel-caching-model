@@ -2,12 +2,12 @@
 
 namespace Hacoidev\CachingModel;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Cache;
-use Hacoidev\CachingModel\Contracts\BuilderInterface;
 use Closure;
+use Hacoidev\CachingModel\Contracts\BuilderInterface;
 use Hacoidev\CachingModel\Contracts\Cacheable;
 use Hacoidev\CachingModel\Exceptions\UnsupportedModelException;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class CacheQueryBuilder implements BuilderInterface
 {
@@ -20,7 +20,7 @@ class CacheQueryBuilder implements BuilderInterface
      */
     public function __construct(string $model)
     {
-        if (!in_array(Cacheable::class, class_implements($model))) {
+        if (! in_array(Cacheable::class, class_implements($model))) {
             throw new UnsupportedModelException();
         }
 
@@ -55,12 +55,13 @@ class CacheQueryBuilder implements BuilderInterface
         });
     }
 
-
     public function get($ids): Collection
     {
         $ids = is_array($ids) ? $ids : [$ids];
 
-        if (count($ids) == 0) return collect([]);
+        if (count($ids) == 0) {
+            return collect([]);
+        }
 
         $available = collect($this->availableFromCache($ids));
 
@@ -100,7 +101,9 @@ class CacheQueryBuilder implements BuilderInterface
     {
         $missingIds = $this->missingIds($ids);
 
-        if (empty($missingIds)) return collect([]);
+        if (empty($missingIds)) {
+            return collect([]);
+        }
 
         $missingItems = $this->model::cacheWithRelation($missingIds)
             ->whereIn($this->model::primaryCacheKey(), $missingIds)
