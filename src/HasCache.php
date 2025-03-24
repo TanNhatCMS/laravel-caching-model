@@ -2,10 +2,10 @@
 
 namespace Hacoidev\CachingModel;
 
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Str;
 use Hacoidev\CachingModel\Contracts\BuilderInterface;
 use Hacoidev\CachingModel\Contracts\Cacheable;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 trait HasCache
 {
@@ -48,18 +48,18 @@ trait HasCache
         return 'id';
     }
 
-    public static function getCacheKey($id, string $key = null): string
+    public static function getCacheKey($id, ?string $key = null): string
     {
         if (is_null($key)) {
             $key = static::primaryCacheKey();
         }
 
-        return md5(sprintf("%s%s_%s_", Str::slug(__CLASS__), $key, $id));
+        return md5(sprintf('%s%s_%s_', Str::slug(__CLASS__), $key, $id));
     }
 
     public static function getCacheKeyList(): string
     {
-        return md5(sprintf('all_%s_cached_keys', Str::slug(__CLASS__) . '.'));
+        return md5(sprintf('all_%s_cached_keys', Str::slug(__CLASS__).'.'));
     }
 
     public static function cacheTimeout(): int
